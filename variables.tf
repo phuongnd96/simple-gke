@@ -128,3 +128,16 @@ variable "nginx_ingress_chart" {
   description = "description"
 }
 
+variable "pods_secondary_ip_range_name" {
+  type        = string
+  default     = ""
+  description = "description"
+}
+
+variable "services_secondary_ip_range_name" {
+  type        = string
+  default     = ""
+  description = "description"
+}
+
+
