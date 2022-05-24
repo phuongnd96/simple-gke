@@ -29,7 +29,7 @@ variable "subnetwork" {
 
 variable "initial_node_count" {
   type        = string
-  description = "initial_node_count"
+  description = "initial node count for default node pool"
   default = 1
 }
 
@@ -71,13 +71,13 @@ variable "zones" {
 variable "pods_secondary_ip_range_name" {
   type        = string
   default     = ""
-  description = "description"
+  description = "pod cidr"
 }
 
 variable "services_secondary_ip_range_name" {
   type        = string
   default     = ""
-  description = "description"
+  description = "service cidr"
 }
 
 
