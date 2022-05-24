@@ -4,9 +4,9 @@ variable "name" {
   description = "cluster name"
 }
 
-variable "gke_num_nodes" {
+variable "nodes_per_az" {
   default     = 2
-  description = "number of gke nodes"
+  description = "number of gke nodes per az"
 }
 
 variable "project_id" {

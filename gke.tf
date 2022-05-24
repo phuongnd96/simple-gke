@@ -39,9 +39,10 @@ resource "google_container_node_pool" "primary_nodes" {
   name                      = "general-pool"
   project                   = var.project_id
   location                  = local.location
+  # Override cluster node location, running workers accross azs
   node_locations            = var.zones
   cluster                   = "${google_container_cluster.primary.name}"
-  node_count                = var.gke_num_nodes
+  node_count                = var.nodes_per_az
 
   node_config {
     oauth_scopes = [
