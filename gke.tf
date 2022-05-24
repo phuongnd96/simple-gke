@@ -38,7 +38,7 @@ resource "google_container_cluster" "primary" {
 resource "google_container_node_pool" "primary_nodes" {
   name                      = "general-pool"
   project                   = var.project_id
-  # location                  = var.zones[0]
+  location                  = local.location
   node_locations            = var.zones
   cluster                   = "${google_container_cluster.primary.name}"
   node_count                = var.gke_num_nodes
