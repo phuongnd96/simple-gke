@@ -16,6 +16,7 @@ resource "helm_release" "nginx_ingress" {
   repository = var.nginx_ingress_chart_repository
   chart      = var.nginx_ingress_chart
   version    = var.nginx_ingress_chart_version
+  atomic     = true
 }
 
 resource "helm_release" "grafana" {
@@ -27,4 +28,5 @@ resource "helm_release" "grafana" {
   repository = var.grafana_chart_repository
   chart      = var.grafana_chart
   version    = var.grafana_chart_version
+  atomic     = true
 }
