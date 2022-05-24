@@ -1,3 +1,8 @@
+provider "kubernetes" {
+  host                   = "https://${google_container_cluster.primary.endpoint}"
+  token                  = data.google_client_config.default.access_token
+}
+
 resource "kubernetes_cluster_role_binding" "cluster_admin" {
   metadata {
     name = "${var.name}-cluster-admin"
@@ -16,4 +21,8 @@ resource "kubernetes_cluster_role_binding" "cluster_admin" {
         api_group = "rbac.authorization.k8s.io"
     }
   }
+  depends_on = [
+    google_container_cluster.primary,
+    google_container_node_pool.primary_nodes
+  ]
 }
