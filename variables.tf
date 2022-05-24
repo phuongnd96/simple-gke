@@ -92,66 +92,6 @@ variable "zones" {
   default     = ["asia-southeast1-a"]
 }
 
-variable "deploy_nginx_ingress" {
-  type        = bool
-  default     = false
-  description = "Decide whether to deploy nginx-ingress or not"
-}
-
-variable "deploy_grafana" {
-  type        = bool
-  default     = false
-  description = "Decide whether to deploy grafana or not"
-}
-
-variable "nginx_ingress_ns" {
-  type        = string
-  default     = ""
-  description = "description"
-}
-
-variable "grafana_ns" {
-  type        = string
-  default     = ""
-  description = "description"
-}
-
-variable "grafana_chart_version" {
-  type        = string
-  default     = ""
-  description = "description"
-}
-
-variable "grafana_chart_repository" {
-  type        = string
-  default     = ""
-  description = "description"
-}
-
-variable "grafana_chart" {
-  type        = string
-  default     = ""
-  description = "description"
-}
-
-variable "nginx_ingress_chart_version" {
-  type        = string
-  default     = ""
-  description = "description"
-}
-
-variable "nginx_ingress_chart_repository" {
-  type        = string
-  default     = ""
-  description = "description"
-}
-
-variable "nginx_ingress_chart" {
-  type        = string
-  default     = ""
-  description = "description"
-}
-
 variable "pods_secondary_ip_range_name" {
   type        = string
   default     = ""
