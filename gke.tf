@@ -1,9 +1,16 @@
+locals {
+  location = var.regional ? var.region : var.zones[0]
+  node_locations = var.regional ? coalescelist(compact(var.zones), sort(random_shuffle.available_zones.result)) : slice(var.zones, 1, length(var.zones))
+  # node_locations = slice(var.zones, 1, length(var.zones))
+}
+
 # GKE cluster
 resource "google_container_cluster" "primary" {
+  provider = google
   name                      = var.name
   project                   = var.project_id
-  # location                  = var.region
-  location                  = var.zones[0]
+  location                  = local.location
+  # node_locations            = local.node_locations
   remove_default_node_pool  = var.remove_default_node_pool
   initial_node_count        = var.initial_node_count
   network                   = var.network
