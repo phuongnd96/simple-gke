@@ -50,3 +50,15 @@ variable "zones" {
   description = "The zones to host the cluster in (optional if regional cluster / required if zonal)"
   default     = ["asia-southeast1-a"]
 }
+
+variable "deploy_nginx_ingress" {
+  type        = bool
+  default     = false
+  description = "Decide whether to deploy nginx-ingress or not"
+}
+
+variable "deploy_grafana" {
+  type        = bool
+  default     = false
+  description = "Decide whether to deploy grafana or not"
+}
