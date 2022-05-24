@@ -23,18 +23,23 @@ resource "google_container_cluster" "primary" {
   name                      = var.name
   project                   = var.project_id
   location                  = local.location
-  # node_locations            = local.node_locations
+  // use node_locations if provided, defaults to cluster level node_locations if not specified
+  node_locations            = lookup(each.value, "node_locations", "") != "" ? split(",", each.value["node_locations"]) : null
   remove_default_node_pool  = var.remove_default_node_pool
   initial_node_count        = var.initial_node_count
   network                   = var.network
   subnetwork                = var.subnetwork
+  lifecycle {
+    ignore_changes = [node_pool, initial_node_count]
+  }
+
 }
 
 resource "google_container_node_pool" "primary_nodes" {
   name                      = "general-pool"
   project                   = var.project_id
   # location                  = var.zones[0]
-  node_locations            = var.zones
+  # node_locations            = var.zones
   cluster                   = "${google_container_cluster.primary.name}"
   node_count                = var.gke_num_nodes
 
