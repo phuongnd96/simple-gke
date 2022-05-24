@@ -3,7 +3,7 @@ provider "helm" {
     # config_path = "~/.kube/config"
   host                   = "https://${google_container_cluster.primary.endpoint}"
 #   token                  = "${google_container_cluster.primary.access_token}"
-  token                  = "${google_client_config.default.access_token}"
+  token                  = "${data.google_client_config.default.access_token}"
   cluster_ca_certificate = "${base64decode(google_container_cluster.primary.master_auth.0.cluster_ca_certificate)}"
   }
 }
