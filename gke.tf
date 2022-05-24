@@ -24,7 +24,7 @@ resource "google_container_cluster" "primary" {
   project                   = var.project_id
   location                  = local.location
   // use node_locations if provided, defaults to cluster level node_locations if not specified
-  node_locations            = local.location
+  node_locations            = local.node_locations
   remove_default_node_pool  = var.remove_default_node_pool
   initial_node_count        = var.initial_node_count
   network                   = var.network
