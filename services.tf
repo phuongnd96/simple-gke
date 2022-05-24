@@ -11,7 +11,7 @@ provider "helm" {
 resource "helm_release" "nginx_ingress" {
   name       = "nginx-ingress-controller"
   count = var.deploy_nginx_ingress == true ? 1 : 0
-  namespace  = "monitoring"
+  namespace  = var.nginx_ingress_ns
   create_namespace = true
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "nginx-ingress-controller"
@@ -20,7 +20,7 @@ resource "helm_release" "nginx_ingress" {
 
 resource "helm_release" "grafana" {
   name       = "grafana"
-  namespace  = "ingress-nginx"
+  namespace  = var.grafana_ns
   create_namespace  = true
   count = var.deploy_grafana == true ? 1 : 0
 

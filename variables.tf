@@ -62,3 +62,15 @@ variable "deploy_grafana" {
   default     = false
   description = "Decide whether to deploy grafana or not"
 }
+
+variable "nginx_ingress_ns" {
+  type        = string
+  default     = ""
+  description = "description"
+}
+
+variable "grafana_ns" {
+  type        = string
+  default     = ""
+  description = "description"
+}
