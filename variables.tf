@@ -39,6 +39,23 @@ variable "remove_default_node_pool" {
   description = "remove_default_node_pool"
 }
 
+variable "create_cluster_admin_role_for_users" {
+  type        = bool
+  default     = false
+  description = "Binding cluster admin role for users"
+}
+
+variable "admin_users" {
+  type        = list(map(string))
+  description = "List of maps containing admin users"
+
+  default = [
+    {
+      name = "bot@org.me"
+    },
+  ]
+}
+
 variable "regional" {
   type        = bool
   default     = false
