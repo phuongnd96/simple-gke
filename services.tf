@@ -19,6 +19,13 @@ resource "helm_release" "nginx_ingress" {
     google_container_cluster.primary,
     google_container_node_pool.primary_nodes
   ]
+  dynamic "set" {
+    for_each = var.nginx_ingress_helm_override
+    content {
+      name = set.value["name"]
+      value = set.value["value"]
+    }
+  }
 }
 
 resource "helm_release" "grafana" {
@@ -31,6 +38,13 @@ resource "helm_release" "grafana" {
   chart      = var.grafana_chart
   version    = var.grafana_chart_version
   atomic     = true
+  dynamic "set" {
+    for_each = var.grafana_helm_override
+    content {
+      name = set.value["name"]
+      value = set.value["value"]
+    }
+  }
   depends_on = [
     google_container_cluster.primary,
     google_container_node_pool.primary_nodes

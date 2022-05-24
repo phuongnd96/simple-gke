@@ -56,6 +56,30 @@ variable "admin_users" {
   ]
 }
 
+variable "grafana_helm_override" {
+  type        = list(map(string))
+  description = "List of maps containing helm override for grafana"
+
+  default = [
+    {
+      name = "bot"
+      value = "bot"
+    },
+  ]
+}
+
+variable "nginx_ingress_helm_override" {
+  type        = list(map(string))
+  description = "List of maps containing helm override for nginx ingress"
+
+  default = [
+    {
+      name = "bot"
+      value = "bot"
+    },
+  ]
+}
+
 variable "regional" {
   type        = bool
   default     = false
