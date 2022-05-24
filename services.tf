@@ -13,9 +13,9 @@ resource "helm_release" "nginx_ingress" {
   count = var.deploy_nginx_ingress == true ? 1 : 0
   namespace  = var.nginx_ingress_ns
   create_namespace = true
-  repository = "https://charts.bitnami.com/bitnami"
-  chart      = "nginx-ingress-controller"
-  version    = "4.1.1"
+  repository = var.nginx_ingress_chart_repository
+  chart      = var.nginx_ingress_chart
+  version    = var.nginx_ingress_chart_version
 }
 
 resource "helm_release" "grafana" {
@@ -24,7 +24,7 @@ resource "helm_release" "grafana" {
   create_namespace  = true
   count = var.deploy_grafana == true ? 1 : 0
 
-  repository = "https://grafana.github.io/helm-charts"
-  chart      = "grafana/grafana"
-  version    = "6.29.4"
+  repository = var.grafana_chart_repository
+  chart      = var.grafana_chart
+  version    = var.grafana_chart_version
 }

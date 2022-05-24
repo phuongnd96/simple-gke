@@ -74,3 +74,40 @@ variable "grafana_ns" {
   default     = ""
   description = "description"
 }
+
+variable "grafana_chart_version" {
+  type        = string
+  default     = ""
+  description = "description"
+}
+
+variable "grafana_chart_repository" {
+  type        = string
+  default     = ""
+  description = "description"
+}
+
+variable "grafana_chart" {
+  type        = string
+  default     = ""
+  description = "description"
+}
+
+variable "nginx_ingress_chart_version" {
+  type        = string
+  default     = ""
+  description = "description"
+}
+
+variable "nginx_ingress_chart_repository" {
+  type        = string
+  default     = ""
+  description = "description"
+}
+
+variable "nginx_ingress_chart" {
+  type        = string
+  default     = ""
+  description = "description"
+}
+
